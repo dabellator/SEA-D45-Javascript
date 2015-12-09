@@ -5,11 +5,16 @@
 	<title>Bear Wrangling</title>
 </head>
 <body data-ng-app="BearStreamApp">
-  <h1>Bears, Bears Everywhere!</h1>
+  <div data-dummy-directive data-greeting="hello world"></div>  
+
   <main data-ng-controller="BearsController" data-ng-init="getAll()">
     <ul id="errorslist">
     	<li data-ng-repeat="error in errors">{{error}}</li>
     </ul>
+
+    <div data-bear-transclude-directive data-message-one="another message">
+      here is some text
+    </div>
 
     <form name="newBearForm" data-ng-submit="create(newBear)">
       <h2>New Bear:</h2>
@@ -26,9 +31,9 @@
       <button type="submit" data-ng-disabled="newBearForm.$invalid">Create New Bear</button>
     </form>
 
-    <ul id="bearlist">
+    <div data-list-directive data-title="bears">
     	<li data-ng-repeat="bear in bears">
-        {{bear.name}}
+        <div data-bear-directive data-bear="bear"></div>
         <form name="bearForm{{bear._id}}" data-ng-submit="update(bear)" data-ng-if="bear.editing">
           <h2>Witness Protection for {{bear.name}}</h2>
 
