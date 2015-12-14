@@ -1,0 +1,17 @@
+<div>
+  <form name="{{formName}}" data-ng-submit="save({bear: bear})">
+    <h2>{{headingText}}</h2>
+
+    <label for="bearName">Name:</label>
+    <input type="text" id="bearName" required data-ng-model="bear.name">
+    
+    <label for="bearFishPreference">Fish Preference: </label>
+    <input type="text" id="bearFishPreference" data-ng-model="bear.fishPreference" placeholder="salmons">
+
+    <label for="bearFlavor">Flavor:</label>
+    <input type="text" id="bearFlavor" data-ng-model="bear.flavor" placeholder="grizzly">
+
+    <button type="submit">{{buttonText}}</button>
+  </form>
+  <ng-transclude></ng-transclude>
+</div>
