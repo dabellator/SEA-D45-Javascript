@@ -3,6 +3,7 @@ var jsonParser = require('body-parser').json();
 var handleError = require(__dirname + '/../lib/handleServerError');
 var basicHttp = require(__dirname + '/../lib/basic_http_authentication');
 var User = require(__dirname + '/../models/user');
+var eatAuth = require(__dirname + '/../lib/eat_auth');
 
 var authRouter = module.exports = exports = express.Router();
 authRouter.post('/signup', jsonParser, function(req, res) {
@@ -46,4 +47,8 @@ authRouter.get('/signin', basicHttp, function(req, res) {
       res.json({token});
    });
   });
+});
+
+authRouter.get('/users', eatAuth, function(req, res) {
+  res.json({username: req.user.username});
 });

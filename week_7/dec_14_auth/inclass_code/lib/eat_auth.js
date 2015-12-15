@@ -2,7 +2,9 @@ var eat = require('eat');
 var User = require(__dirname + '/../models/user');
 
 module.exports = exports = function(req, res, next) {
-  var token = req.headers.token || (req.body)? req.body.token : '';  
+  var token = req.headers.token;
+  var bodyToken = (req.body)? req.body.token : '';
+  token = token || bodyToken;
   if (!token) {
     console.log('no token');
     return res.status(401).json({msg: 'authentiCat seyzzz noe, and is watching you!!!!!1'});
